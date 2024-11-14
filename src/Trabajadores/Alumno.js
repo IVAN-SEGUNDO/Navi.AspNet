@@ -33,62 +33,74 @@ const ListaAlumnos = () => {
             : 0;
         
         return {
+            id: alumno.id,
+            cuenta: alumno.cuenta,
             nombre: alumno.nombre,
             promedio: promedio,
-            estado: promedio >= 6 ? "Aprobado" : "Reprobado"
+            estado: promedio >= 7 ? "Aprobado" : "Reprobado"
         };
     });
 
-    const data = {
-        labels: alumnosConPromedio.map(alumno => alumno.nombre),
-        datasets: [
-            {
-                label: 'Promedio',
-                data: alumnosConPromedio.map(alumno => alumno.promedio),
-                backgroundColor: alumnosConPromedio.map(alumno => alumno.promedio >= 6 ? '#36A2EB' : '#FF6384'),
-            }
-        ],
-    };
-
     return (
         <div className="container mt-5">
-            <h2 className="text-center mb-5" style={{ color: '#343a40', fontWeight: 'bold', fontSize: '2.5rem' }}>
-                Promedios de Alumnos
+            <h2 className="text-center mb-5" style={{ color: '#495057', fontWeight: 'bold', fontSize: '2.8rem', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                Calificaciones del Ing. Alex Ramírez Galindo
             </h2>
 
-            <div style={{ height: '400px', marginBottom: '50px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px', padding: '20px', backgroundColor: '#f8f9fa' }}>
-                <Bar
-                    data={data}
-                    options={{
-                        responsive: true,
-                        plugins: {
-                            legend: { display: true },
-                            tooltip: { enabled: true },
-                        },
-                        scales: {
-                            y: { beginAtZero: true, max: 10 },
-                        },
-                    }}
-                />
-            </div>
-
-            <div className="mt-5">
-                <h3 className="mb-4 text text-center" style={{ color: '#343a40', fontWeight: 'bold', fontSize: '1.75rem' }}>
-                    Detalles de los Alumnos
-                </h3>
-                <ul className="list-group">
-                    {alumnosConPromedio.map((alumno, index) => (
-                        <li
-                            key={index}
-                            className={`list-group-item d-flex justify-content-between align-items-center ${alumno.estado === "Aprobado" ? "bg-success text-white" : "bg-danger text-white"}`}
-                            style={{ marginBottom: '10px', borderRadius: '8px', padding: '15px' }}
-                        >
-                            <span><strong>Nombre:</strong> {alumno.nombre}</span>
-                            <span><strong>Promedio:</strong> {alumno.promedio.toFixed(2)}</span>
-                            <span><strong>Estado:</strong> {alumno.estado}</span>
-                        </li>
-                    ))}
-                </ul>
+            <div className="row">
+                {alumnosConPromedio.map((alumno, index) => (
+                    <div key={index} className="col-md-6 mb-4">
+                        <div className="card shadow-lg" style={{ borderRadius: '12px', border: '1px solid #e0e0e0', overflow: 'hidden' }}>
+                            <div className="card-body" style={{ padding: '1.5rem' }}>
+                                <h5 className="card-title text-muted" style={{ fontSize: '1.1rem', fontWeight: '600', letterSpacing: '0.5px' }}>ID: {alumno.id}</h5>
+                                <p><strong>Cuenta:</strong> {alumno.cuenta}</p>
+                                <p><strong>Nombre:</strong> {alumno.nombre}</p>
+                                
+                                <div style={{ height: '200px', marginBottom: '1rem' }}>
+                                    <Bar
+                                        data={{
+                                            labels: ['Promedio'],
+                                            datasets: [
+                                                {
+                                                    label: 'Promedio de Calificaciones',
+                                                    data: [alumno.promedio],
+                                                    backgroundColor: alumno.promedio >= 7 ? '#28a745' : '#dc3545', // Color coincide con el botón
+                                                }
+                                            ],
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            plugins: {
+                                                legend: { display: false },
+                                                tooltip: { enabled: true },
+                                            },
+                                            scales: {
+                                                y: { beginAtZero: true, max: 10 },
+                                            },
+                                        }}
+                                    />
+                                </div>
+                                <div style={{ fontSize: '1rem', fontWeight: '600', color: '#6c757d', marginBottom: '0.5rem' }}>
+                                    <strong>Promedio:</strong> {alumno.promedio.toFixed(2)}
+                                </div>
+                                
+                                <button
+                                    className={`btn btn-${alumno.estado === "Aprobado" ? "success" : "danger"} w-100`}
+                                    style={{
+                                        borderRadius: '8px',
+                                        fontWeight: 'bold',
+                                        padding: '0.75rem',
+                                        fontSize: '1rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px'
+                                    }}
+                                >
+                                    {alumno.estado}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
