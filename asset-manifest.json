@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Navi.Net/static/css/main.9a5c6096.css",
-    "main.js": "/Navi.Net/static/js/main.ad8afe58.js",
-    "static/js/453.2accbebf.chunk.js": "/Navi.Net/static/js/453.2accbebf.chunk.js",
-    "static/media/logo.svg": "/Navi.Net/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/Navi.Net/index.html",
-    "main.9a5c6096.css.map": "/Navi.Net/static/css/main.9a5c6096.css.map",
-    "main.ad8afe58.js.map": "/Navi.Net/static/js/main.ad8afe58.js.map",
-    "453.2accbebf.chunk.js.map": "/Navi.Net/static/js/453.2accbebf.chunk.js.map"
+    "main.css": "/Navi.AspNet/static/css/main.9a5c6096.css",
+    "main.js": "/Navi.AspNet/static/js/main.f4970334.js",
+    "static/js/453.2accbebf.chunk.js": "/Navi.AspNet/static/js/453.2accbebf.chunk.js",
+    "static/media/logo.svg": "/Navi.AspNet/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Navi.AspNet/index.html",
+    "main.9a5c6096.css.map": "/Navi.AspNet/static/css/main.9a5c6096.css.map",
+    "main.f4970334.js.map": "/Navi.AspNet/static/js/main.f4970334.js.map",
+    "453.2accbebf.chunk.js.map": "/Navi.AspNet/static/js/453.2accbebf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9a5c6096.css",
-    "static/js/main.ad8afe58.js"
+    "static/js/main.f4970334.js"
   ]
 }
