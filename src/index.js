@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ListaDocentes from './Trabajadores/Docente';
+import ListaAlumnos from './Trabajadores/Alumno';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ListaDocentes/>
+    <ListaAlumnos/>
   </React.StrictMode>
 );
 

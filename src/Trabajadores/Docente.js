@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    Chart as ChartJS,
-    ArcElement,
-    BarElement,
-    CategoryScale,
-    LinearScale,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import { Chart as ChartJS, ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -26,7 +18,6 @@ const ListaDocentes = () => {
                 setDocentes(data);
 
                 if (Array.isArray(data)) {
-                    // Configuración de los datos para la gráfica de sexo
                     const maleCount = data.filter(docente => docente.sexo === 'M').length;
                     const femaleCount = data.filter(docente => docente.sexo === 'F').length;
 
@@ -36,16 +27,13 @@ const ListaDocentes = () => {
                             {
                                 label: 'Distribución por Sexo',
                                 data: [maleCount, femaleCount],
-                                backgroundColor: ['#36A2EB', '#FF6384'], // Colores diferentes
+                                backgroundColor: ['#007bff', '#dc3545'], // Colores modernos
                             },
                         ],
                     });
 
-                    // Configuración de los datos para la gráfica de IDs
                     const ids = data.map(docente => docente.id);
-                    
-                    // Genera colores aleatorios para cada barra
-                    const colors = ids.map(() => `#${Math.floor(Math.random()*16777215).toString(16)}`);
+                    const colors = ids.map(() => `#${Math.floor(Math.random() * 16777215).toString(16)}`);
 
                     setIdChartData({
                         labels: ids,
@@ -53,7 +41,7 @@ const ListaDocentes = () => {
                             {
                                 label: 'IDs de Docentes',
                                 data: ids,
-                                backgroundColor: colors, // Colores diferentes para cada ID
+                                backgroundColor: colors,
                             },
                         ],
                     });
@@ -71,15 +59,15 @@ const ListaDocentes = () => {
 
     return (
         <div className="container mt-5">
-            <h1 className="alert alert-primary text-center mb-4">DOCENTES INGENIERÍA INFORMÁTICA TESSFP</h1>
+            <h1 className="text-center mb-5" style={{ color: '#6c757d', fontWeight: 'bold' }}>DOCENTES INGENIERÍA INFORMÁTICA TESSFP</h1>
             <div className="row">
                 {docentes && docentes.map((docente) => (
                     <div key={docente.id} className="col-md-4 mb-4">
-                        <div className="card shadow-sm">
-                            <div className="card-body alert alert-success">
-                                <h5 className="card-title">ID: {docente.id}</h5>
+                        <div className="card border-0 shadow" style={{ borderRadius: '10px' }}>
+                            <div className="card-body" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px' }}>
+                                <h5 className="card-title text-primary">ID: {docente.id}</h5>
                                 <p className="card-text"><strong>Nombre:</strong> {docente.nombre}</p>
-                                <p className="card-text"><strong>Sexo:</strong> {docente.sexo}</p>
+                                <p className="card-text"><strong>Sexo:</strong> {docente.sexo === 'M' ? 'Masculino' : 'Femenino'}</p>
                                 <p className="card-text"><strong>Teléfono:</strong> {docente.telefono}</p>
                             </div>
                         </div>
@@ -88,13 +76,24 @@ const ListaDocentes = () => {
             </div>
 
 
-            {/* Gráfica de IDs de docentes */}
+            {/* Gráfica de IDs de Docentes */}
             <div className="mt-5">
-                <h2 className="text-center">ID de Docentes</h2>
+                <h2 className="text-center mb-4" style={{ color: '#6c757d' }}>ID de Docentes</h2>
                 <div className="d-flex justify-content-center">
                     {idChartData ? (
                         <div style={{ width: '80%' }}>
-                            <Bar data={idChartData} options={{ indexAxis: 'x' }} />
+                            <Bar data={idChartData} options={{
+                                indexAxis: 'x',
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: { enabled: true },
+                                },
+                                scales: {
+                                    x: { ticks: { color: '#6c757d' } },
+                                    y: { ticks: { color: '#6c757d' } },
+                                },
+                                responsive: true,
+                            }} />
                         </div>
                     ) : (
                         <p className="text-center">Cargando gráfica de IDs...</p>
