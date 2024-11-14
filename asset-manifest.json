@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Navi.AspNet/static/css/main.9a5c6096.css",
-    "main.js": "/Navi.AspNet/static/js/main.f4970334.js",
+    "main.js": "/Navi.AspNet/static/js/main.c72ad92d.js",
     "static/js/453.2accbebf.chunk.js": "/Navi.AspNet/static/js/453.2accbebf.chunk.js",
     "static/media/logo.svg": "/Navi.AspNet/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Navi.AspNet/index.html",
     "main.9a5c6096.css.map": "/Navi.AspNet/static/css/main.9a5c6096.css.map",
-    "main.f4970334.js.map": "/Navi.AspNet/static/js/main.f4970334.js.map",
+    "main.c72ad92d.js.map": "/Navi.AspNet/static/js/main.c72ad92d.js.map",
     "453.2accbebf.chunk.js.map": "/Navi.AspNet/static/js/453.2accbebf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9a5c6096.css",
-    "static/js/main.f4970334.js"
+    "static/js/main.c72ad92d.js"
   ]
 }
